@@ -1,0 +1,6 @@
+function e = enc_key(N, phi, cop)
+e = randi([1, phi],1,1);
+
+if (~iscoprime(e,N)) && (~iscoprime(e,phi))
+    e = enc_key
+end

@@ -1,0 +1,18 @@
+clc;
+clear;
+
+[p,q,N] = p_q_selector(300);
+
+lambda = lcm(p-1,q-1);
+
+mu = modinv(mu,N);
+
+r = enc_key(N);
+t = randi(N-1,1,1);
+N_sq = N^2;
+
+value_enc = mod( powermod((N+1),t,N_sq) * powermod(r,N,N_sq),N_sq);
+i = powermod(value_enc,lambda,(N_sq));
+x = L(i,N);
+
+value_dec = mod((mu*x),N);
